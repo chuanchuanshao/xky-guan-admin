@@ -642,9 +642,10 @@
 .sci-card {
   background: var(--sci-surface);
   border: 1px solid var(--sci-border);
-  border-radius: 4px;
-  padding: 12px 14px;
+  border-radius: 6px;
+  padding: 14px 16px;
   margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(31, 35, 40, 0.06);
 }
 
 .sci-card-head {

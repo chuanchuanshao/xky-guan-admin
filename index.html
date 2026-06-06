@@ -10,7 +10,14 @@
 </head>
 <body>
 
-  <div id="login-screen">
+  <div id="boot-screen" class="hidden">
+    <div class="boot-card">
+      <div class="boot-spinner" aria-hidden="true"></div>
+      <p id="boot-message">正在加载…</p>
+    </div>
+  </div>
+
+  <div id="login-screen" class="hidden">
     <div class="login-card">
       <h1>XKY 管理面板</h1>
       <p class="subtitle">guan.xkyframe.com · 登录后可使用完整业务功能</p>

@@ -45,6 +45,27 @@ async function refreshAccessToken() {
   return true;
 }
 
+/** JWT 是否即将过期（提前 2 分钟刷新） */
+function isAccessTokenStale(token) {
+  if (!token) return true;
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+    if (!payload.exp) return false;
+    return Date.now() >= payload.exp * 1000 - 120000;
+  } catch {
+    return true;
+  }
+}
+
+/** 进入 SPA 前确保 access token 可用，避免闪回登录页 */
+async function ensureAccessToken() {
+  const { access, refresh } = getTokens();
+  if (!access && !refresh) return false;
+  if (access && !isAccessTokenStale(access)) return true;
+  if (refresh) return refreshAccessToken();
+  return !!access;
+}
+
 async function api(path, options = {}) {
   const { access } = getTokens();
   const headers = {
@@ -86,7 +107,6 @@ async function api(path, options = {}) {
   }
 
   if (res.status === 401) {
-    clearTokens();
     throw new Error("登录已过期，请重新登录");
   }
 
