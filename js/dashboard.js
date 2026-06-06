@@ -11,7 +11,7 @@ function fmtPct(v) {
   if (v == null) return "";
   const sign = v >= 0 ? "▲" : "▼";
   const cls = v >= 0 ? "delta-up" : "delta-down";
-  return `<span class="delta ${cls}">${sign} YoY ${Math.abs(v).toFixed(1)}%</span>`;
+  return `<span class="delta ${cls}">${sign} YoY ${Math.abs(v).toFixed(0)}%</span>`;
 }
 
 function escHtml(s) {
