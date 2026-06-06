@@ -48,7 +48,7 @@
         <a class="nav-link" href="/finance/">财务管理</a>
         <a class="nav-link" href="/reports/">报表中心</a>
         <a class="nav-link" href="/settings/">系统设置</a>
-        <a class="nav-link hidden" href="/accounts/registrations/" id="nav-registrations">注册审批</a>
+        <a class="nav-link hidden" href="/accounts/registrations/" id="nav-registrations">注册审批 <span id="nav-reg-badge" class="nav-badge hidden"></span></a>
       </nav>
     </aside>
     <div class="main">
@@ -60,6 +60,10 @@
         </div>
       </header>
       <div class="content">
+        <div id="reg-pending-banner" class="reg-pending-banner hidden">
+          <span id="reg-pending-text"></span>
+          <a href="/accounts/registrations/" id="reg-pending-link">前往审批 →</a>
+        </div>
         <div id="page-dashboard" class="page">
           <div id="dashboard-content"></div>
         </div>

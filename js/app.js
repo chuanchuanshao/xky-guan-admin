@@ -12,15 +12,58 @@ async function loadDashboard() {
   }
 }
 
+function setupRegistrationNav(me) {
+  const regNav = $("#nav-registrations");
+  const badge = $("#nav-reg-badge");
+  const banner = $("#reg-pending-banner");
+  const bannerText = $("#reg-pending-text");
+  const bannerLink = $("#reg-pending-link");
+  const canReview = !!me.can_review_registrations;
+  const pending = me.pending_registration_count || 0;
+
+  if (!canReview) return;
+
+  if (regNav) {
+    regNav.classList.remove("hidden");
+    regNav.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await syncDjangoSession();
+        window.location.href = regNav.href;
+      } catch (err) {
+        alert("无法打开审批页，请重新登录后再试。");
+      }
+    });
+  }
+
+  if (badge && pending > 0) {
+    badge.textContent = pending > 99 ? "99+" : String(pending);
+    badge.classList.remove("hidden");
+  }
+
+  if (banner && pending > 0) {
+    bannerText.textContent = `有 ${pending} 条用户注册待审批`;
+    banner.classList.remove("hidden");
+    if (bannerLink) {
+      bannerLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+          await syncDjangoSession();
+          window.location.href = bannerLink.href;
+        } catch (err) {
+          alert("无法打开审批页，请重新登录后再试。");
+        }
+      });
+    }
+  }
+}
+
 async function initApp() {
   const me = await getMe();
   $("#user-info").textContent =
     me.username + (me.groups?.length ? ` (${me.groups.join(", ")})` : "");
 
-  const regNav = $("#nav-registrations");
-  if (regNav && (me.username === "guan" || me.groups?.includes("管理员"))) {
-    regNav.classList.remove("hidden");
-  }
+  setupRegistrationNav(me);
 
   try {
     await syncDjangoSession();

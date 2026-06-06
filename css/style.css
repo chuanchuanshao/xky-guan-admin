@@ -23,6 +23,44 @@ body {
 
 .hidden { display: none !important; }
 
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 .25rem;
+  margin-left: .25rem;
+  font-size: .65rem;
+  font-weight: 700;
+  color: #fff;
+  background: #cf222e;
+  border-radius: 999px;
+}
+
+.reg-pending-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: 1rem;
+  padding: .85rem 1rem;
+  background: #fff8c5;
+  border: 1px solid #d4a72c;
+  border-radius: 8px;
+  font-size: .9rem;
+  color: #4d2d00;
+}
+
+.reg-pending-banner a {
+  color: #0969da;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reg-pending-banner a:hover { text-decoration: underline; }
+
 .loading { color: var(--muted); padding: 1rem 0; }
 .error { color: var(--danger); font-size: .875rem; margin-top: .75rem; }
 .meta { color: var(--muted); font-size: .8rem; margin-top: .75rem; }
