@@ -113,7 +113,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       errEl.textContent = "";
       await bootstrapApp();
     } catch (err) {
-      errEl.textContent = err.message || "登录失败";
+      const msg = err.message || "登录失败";
+      if (/no active account|not active|未启用/i.test(msg)) {
+        errEl.textContent = "账号未启用或正在等待 guan 审批，通过后再来首页登录。";
+      } else {
+        errEl.textContent = msg;
+      }
     }
   });
 
