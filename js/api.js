@@ -62,6 +62,7 @@ async function api(path, options = {}) {
     res = await fetch(`${API_BASE}${path}`, {
       ...options,
       headers,
+      credentials: "include",
       signal: controller.signal,
     });
   } catch (err) {
@@ -80,7 +81,7 @@ async function api(path, options = {}) {
         ...headers,
         Authorization: `Bearer ${getTokens().access}`,
       };
-      res = await fetch(`${API_BASE}${path}`, { ...options, headers: retryHeaders });
+      res = await fetch(`${API_BASE}${path}`, { ...options, headers: retryHeaders, credentials: "include" });
     }
   }
 
@@ -132,4 +133,17 @@ async function getOrders(page = 1, status = "") {
 
 async function getProductionTasks(page = 1) {
   return api(`/production/tasks/?page=${page}`);
+}
+
+/** 同步 Django Session，使 /orders/、/ai/chat/ 等完整页面可访问 */
+async function syncDjangoSession() {
+  return api("/auth/django-session/", { method: "POST", body: "{}" });
+}
+
+async function syncDjangoLogout() {
+  try {
+    await api("/auth/django-logout/", { method: "POST", body: "{}" });
+  } catch {
+    /* ignore */
+  }
 }

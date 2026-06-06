@@ -23,10 +23,14 @@ function escHtml(s) {
 }
 
 const QUICK_NAV = {
-  "orders:create": "page-orders",
-  "orders:list": "page-orders",
-  "customers:list": "page-customers",
-  "production:tasks": "page-production",
+  "orders:create": "/orders/new/",
+  "orders:list": "/orders/",
+  "orders:index": "/orders/",
+  "ai:chat": "/ai/chat/",
+  "reports:index": "/reports/",
+  "finance:index": "/finance/",
+  "customers:list": "/customers/",
+  "production:tasks": "/production/",
 };
 
 function destroyDashboardCharts() {
@@ -172,9 +176,9 @@ function renderDashboard(d, container) {
 
   const quickLinks = (d.quick_links || [])
     .map((link) => {
-      const page = QUICK_NAV[link.url_name];
-      if (page) {
-        return `<button type="button" class="sci-quick-btn" data-nav="${page}">${escHtml(link.label)}</button>`;
+      const href = QUICK_NAV[link.url_name];
+      if (href) {
+        return `<a class="sci-quick-btn" href="${href}">${escHtml(link.label)}</a>`;
       }
       return `<span class="sci-quick-muted">${escHtml(link.label)}</span>`;
     })
@@ -281,17 +285,6 @@ function renderDashboard(d, container) {
         </div>
       </div>
     </div>`;
-
-  container.querySelectorAll(".sci-quick-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const page = btn.dataset.nav;
-      if (page && typeof showPage === "function") {
-        showPage(page);
-        const loader = pageLoaders?.[page];
-        if (loader) loader();
-      }
-    });
-  });
 
   requestAnimationFrame(() => initDashboardCharts(d));
 }

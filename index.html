@@ -10,11 +10,10 @@
 </head>
 <body>
 
-  <!-- 登录 -->
   <div id="login-screen">
     <div class="login-card">
       <h1>XKY 管理面板</h1>
-      <p class="subtitle">guan.xkyframe.com</p>
+      <p class="subtitle">guan.xkyframe.com · 登录后可使用完整业务功能</p>
       <form id="login-form">
         <div class="form-group">
           <label for="username">用户名</label>
@@ -30,18 +29,26 @@
     </div>
   </div>
 
-  <!-- 主界面 -->
   <div id="app-screen" class="hidden">
     <aside class="sidebar">
       <div class="brand">XKY 工厂管理</div>
-      <button class="nav-btn active" data-page="page-dashboard" data-title="经营总览">经营总览</button>
-      <button class="nav-btn" data-page="page-orders" data-title="订单管理">订单</button>
-      <button class="nav-btn" data-page="page-customers" data-title="客户管理">客户</button>
-      <button class="nav-btn" data-page="page-production" data-title="生产任务">生产</button>
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-btn active" data-page="page-dashboard">经营总览</button>
+        <a class="nav-link" href="/orders/">订单管理</a>
+        <a class="nav-link" href="/ai/chat/">AI 录单</a>
+        <a class="nav-link" href="/production/">生产管理</a>
+        <a class="nav-link" href="/inventory/">库存管理</a>
+        <a class="nav-link" href="/purchasing/">采购管理</a>
+        <a class="nav-link" href="/customers/">客户管理</a>
+        <a class="nav-link" href="/suppliers/">供应商</a>
+        <a class="nav-link" href="/finance/">财务管理</a>
+        <a class="nav-link" href="/reports/">报表中心</a>
+        <a class="nav-link" href="/settings/">系统设置</a>
+      </nav>
     </aside>
     <div class="main">
       <header class="topbar">
-        <span class="topbar-title" id="page-title">经营总览</span>
+        <span class="topbar-title">经营总览</span>
         <div>
           <span class="user" id="user-info"></span>
           <button class="btn btn-ghost" id="logout-btn" style="margin-left:.75rem">退出</button>
@@ -50,15 +57,6 @@
       <div class="content">
         <div id="page-dashboard" class="page">
           <div id="dashboard-content"></div>
-        </div>
-        <div id="page-orders" class="page hidden">
-          <div id="orders-content"></div>
-        </div>
-        <div id="page-customers" class="page hidden">
-          <div id="customers-content"></div>
-        </div>
-        <div id="page-production" class="page hidden">
-          <div id="production-content"></div>
         </div>
       </div>
     </div>

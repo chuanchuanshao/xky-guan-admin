@@ -148,6 +148,24 @@ body {
 .nav-btn:hover { color: var(--text); background: var(--raised); }
 .nav-btn.active { color: var(--accent); background: rgba(9, 105, 218, 0.08); font-weight: 600; }
 
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  display: block;
+  padding: .65rem 1.25rem;
+  color: var(--muted);
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: var(--raised);
+}
+
 .main {
   flex: 1;
   display: flex;
