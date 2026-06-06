@@ -53,7 +53,25 @@ async function api(path, options = {}) {
     ...options.headers,
   };
 
-  let res = await fetch(`${API_BASE}${path}`, { ...options, headers });
+  const timeoutMs = options.timeoutMs || 20000;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  let res;
+  try {
+    res = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers,
+      signal: controller.signal,
+    });
+  } catch (err) {
+    clearTimeout(timer);
+    if (err.name === "AbortError") {
+      throw new Error("请求超时，请检查网络或稍后重试");
+    }
+    throw new Error("网络错误，无法连接后端 API");
+  }
+  clearTimeout(timer);
 
   if (res.status === 401 && access) {
     const ok = await refreshAccessToken();
@@ -68,8 +86,7 @@ async function api(path, options = {}) {
 
   if (res.status === 401) {
     clearTokens();
-    window.location.href = "index.html";
-    throw new Error("未授权");
+    throw new Error("登录已过期，请重新登录");
   }
 
   const text = await res.text();

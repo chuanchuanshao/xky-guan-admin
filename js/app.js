@@ -173,6 +173,13 @@ function showLogin() {
 function showApp() {
   $("#login-screen").classList.add("hidden");
   $("#app-screen").classList.remove("hidden");
+  $("#dashboard-content").innerHTML = '<p class="loading">正在加载数据…</p>';
+}
+
+async function bootstrapApp() {
+  await getMe();
+  showApp();
+  await initApp();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -183,9 +190,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = $("#username").value.trim();
     const password = $("#password").value;
     try {
+      errEl.textContent = "登录中…";
       await login(username, password);
-      showApp();
-      await initApp();
+      errEl.textContent = "";
+      await bootstrapApp();
     } catch (err) {
       errEl.textContent = err.message || "登录失败";
     }
@@ -194,11 +202,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { access } = getTokens();
   if (access) {
     try {
-      showApp();
-      await initApp();
-    } catch {
+      await bootstrapApp();
+    } catch (err) {
       clearTokens();
       showLogin();
+      $("#login-error").textContent = err.message || "会话已失效，请重新登录";
     }
   } else {
     showLogin();
