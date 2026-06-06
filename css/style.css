@@ -1,19 +1,20 @@
 :root {
-  --bg: #0f1419;
-  --surface: #1a2332;
-  --border: #2d3a4f;
-  --text: #e8edf4;
-  --muted: #8b9cb3;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --danger: #ef4444;
-  --success: #22c55e;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --raised: #f6f8fa;
+  --border: #d0d7de;
+  --text: #1f2328;
+  --muted: #656d76;
+  --accent: #0969da;
+  --accent-hover: #0550ae;
+  --danger: #cf222e;
+  --success: #1a7f37;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -22,23 +23,27 @@ body {
 
 .hidden { display: none !important; }
 
+.loading { color: var(--muted); padding: 1rem 0; }
+.error { color: var(--danger); font-size: .875rem; margin-top: .75rem; }
+.meta { color: var(--muted); font-size: .8rem; margin-top: .75rem; }
+
 /* ── 登录页 ── */
 #login-screen {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+  background: #f6f8fa;
 }
 
 .login-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 2.5rem;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  box-shadow: 0 8px 24px rgba(31, 35, 40, 0.08);
 }
 
 .login-card h1 {
@@ -74,6 +79,7 @@ body {
 .form-group input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
 }
 
 .btn {
@@ -85,7 +91,7 @@ body {
   border-radius: 6px;
   font-size: .9rem;
   cursor: pointer;
-  transition: background .15s;
+  transition: background .15s, border-color .15s;
 }
 
 .btn-primary {
@@ -98,15 +104,18 @@ body {
 .btn-primary:hover { background: var(--accent-hover); }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--surface);
   color: var(--muted);
   border: 1px solid var(--border);
 }
 
-.error { color: var(--danger); font-size: .85rem; margin-top: .75rem; }
+.btn-ghost:hover {
+  background: var(--raised);
+  color: var(--text);
+}
 
 /* ── 主界面 ── */
-#app-screen { display: flex; min-height: 100vh; }
+#app-screen { display: flex; min-height: 100vh; background: var(--bg); }
 
 .sidebar {
   width: 220px;
@@ -136,13 +145,14 @@ body {
   cursor: pointer;
 }
 
-.nav-btn:hover { color: var(--text); background: rgba(59,130,246,.08); }
-.nav-btn.active { color: var(--accent); background: rgba(59,130,246,.12); }
+.nav-btn:hover { color: var(--text); background: var(--raised); }
+.nav-btn.active { color: var(--accent); background: rgba(9, 105, 218, 0.08); font-weight: 600; }
 
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .topbar {
@@ -154,34 +164,24 @@ body {
   background: var(--surface);
 }
 
+.topbar-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .topbar .user { font-size: .85rem; color: var(--muted); }
 
 .content {
   padding: 1.5rem;
   overflow-y: auto;
+  flex: 1;
+  background: var(--bg);
 }
 
 .page h2 {
   font-size: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
-
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.kpi-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
-}
-
-.kpi-label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: .35rem; }
-.kpi-value { font-size: 1.5rem; font-weight: 600; }
 
 .data-table {
   width: 100%;
@@ -198,27 +198,28 @@ body {
 
 .data-table th {
   color: var(--muted);
-  font-weight: 500;
-  background: var(--surface);
+  font-weight: 600;
+  background: var(--raised);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.data-table tbody tr:hover { background: rgba(255,255,255,.02); }
+.data-table tbody tr:hover { background: var(--raised); }
 
 .badge {
   display: inline-block;
   padding: .15rem .5rem;
   border-radius: 4px;
   font-size: .75rem;
-  background: rgba(59,130,246,.15);
+  background: rgba(9, 105, 218, 0.1);
   color: var(--accent);
 }
-
-.loading { color: var(--muted); }
-.meta { color: var(--muted); font-size: .8rem; margin-top: .75rem; }
 
 @media (max-width: 768px) {
   #app-screen { flex-direction: column; }
   .sidebar { width: 100%; display: flex; flex-wrap: wrap; padding: .5rem; }
   .sidebar .brand { width: 100%; border: none; padding-bottom: .5rem; }
   .nav-btn { width: auto; padding: .5rem .75rem; }
+  .content { padding: 1rem; }
 }
