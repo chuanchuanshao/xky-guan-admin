@@ -494,6 +494,8 @@
   border-right: 1px solid var(--sci-border);
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 0 12px rgba(31, 35, 40, 0.04);
+}
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 40;
@@ -569,6 +571,7 @@
   background: var(--sci-surface);
   border-bottom: 1px solid var(--sci-border);
   padding: 0.65rem 1rem 0.75rem;
+  box-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
 }
 
 .sci-app-header-row {
@@ -787,3 +790,78 @@
 .val-green { color: var(--sci-green); }
 .val-yellow { color: var(--sci-yellow); }
 .val-red { color: var(--sci-red); }
+
+.hidden { display: none !important; }
+
+/* ── 全局链接规范 ── */
+.sci-app a:not([class]) { color: inherit; text-decoration: none; }
+.sci-dash a:not([class]) { color: inherit; text-decoration: none; }
+
+.sci-link-weak {
+  color: var(--sci-muted);
+  text-decoration: none;
+  font-size: 11px;
+}
+.sci-link-weak:hover { color: var(--sci-text); }
+
+.sci-text-blue { color: var(--sci-blue); }
+
+.sci-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sci-muted);
+}
+
+.sci-num {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+.sci-num-blue { color: var(--sci-blue); }
+.sci-num-green { color: var(--sci-green); }
+.sci-num-red { color: var(--sci-red); }
+
+/* 导入导出工具栏 */
+.impex-toolbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+.impex-export-wrap { position: relative; display: inline-block; }
+
+.impex-export-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  min-width: 12rem;
+  z-index: 20;
+  background: var(--sci-surface);
+  border: 1px solid var(--sci-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(31, 35, 40, 0.12);
+  padding: 4px 0;
+}
+
+.impex-export-menu.is-open { display: block; }
+
+.impex-export-menu a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--sci-text);
+  text-decoration: none;
+}
+
+.impex-export-menu a:hover { background: var(--sci-raised); }
+
+.sci-table .name-cell { font-family: inherit; }
+.sci-table tr.row-low { background: #fff8c5; }
+
+/* 可点击的设置/导航卡片 */
+a.sci-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+a.sci-card:hover {
+  border-color: var(--sci-blue);
+  box-shadow: 0 2px 8px rgba(9, 105, 218, 0.1);
+}
