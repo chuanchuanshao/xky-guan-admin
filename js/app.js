@@ -17,6 +17,11 @@ async function initApp() {
   $("#user-info").textContent =
     me.username + (me.groups?.length ? ` (${me.groups.join(", ")})` : "");
 
+  const regNav = $("#nav-registrations");
+  if (regNav && (me.username === "guan" || me.groups?.includes("管理员"))) {
+    regNav.classList.remove("hidden");
+  }
+
   try {
     await syncDjangoSession();
   } catch (e) {

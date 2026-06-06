@@ -57,6 +57,32 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.login-register-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: .9rem;
+  color: var(--text);
+}
+
+.login-register-footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-register-footer a:hover {
+  text-decoration: underline;
+}
+
+.login-register-hint {
+  display: block;
+  margin-top: .35rem;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
 .form-group { margin-bottom: 1rem; }
 
 .form-group label {
