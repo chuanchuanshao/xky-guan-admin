@@ -1,7 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "http://api.xkyframe.com/api/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "http://api.xkyframe.com/api/$1" }
   ],
   "headers": [
     {
