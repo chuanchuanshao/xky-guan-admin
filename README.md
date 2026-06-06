@@ -1,9 +1,6 @@
 # XKY 管理面板（Vercel 前端）
 
-`guan.xkyframe.com` 的轻量管理面板，通过 API 连接腾讯云 Django 后端。
-
-> **注意：** 这不是 Django 项目里 `templates/dashboard.html` 那套完整科研风仪表盘。
-> 完整版仍在 **xkyframing.xyz**（Django 模板渲染）。本前端是方案 A 的 Vercel 独立页面。
+`guan.xkyframe.com` 的 Vercel 管理面板，UI 与本地 Django **经营总览**（`templates/dashboard.html`）一致，白底浅色主题，数据来自腾讯云 API。
 
 ## 登录
 
