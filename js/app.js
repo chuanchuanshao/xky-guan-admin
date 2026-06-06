@@ -1,156 +1,358 @@
-const $ = (sel) => document.querySelector(sel);
-
-let _appInitialized = false;
-
-async function loadDashboard() {
-  const el = $("#dashboard-content");
-  el.innerHTML = '<div class="sci-dash"><p class="loading">加载中…</p></div>';
-  try {
-    destroyDashboardCharts();
-    const d = await getDashboard();
-    renderDashboard(d, el);
-  } catch (e) {
-    el.innerHTML = `<p class="error">${e.message}</p>`;
-  }
-}
-
-function setupRegistrationNav(me) {
-  const regNav = $("#nav-registrations");
-  const badge = $("#nav-reg-badge");
-  const banner = $("#reg-pending-banner");
-  const bannerText = $("#reg-pending-text");
-  const bannerLink = $("#reg-pending-link");
-  const canReview = !!me.can_review_registrations;
-  const pending = me.pending_registration_count || 0;
-
-  if (!canReview) return;
-
-  if (regNav) {
-    regNav.classList.remove("hidden");
-    regNav.addEventListener("click", async (e) => {
-      e.preventDefault();
-      try {
-        await syncDjangoSession();
-        window.location.href = regNav.href;
-      } catch (err) {
-        alert("无法打开审批页，请重新登录后再试。");
-      }
-    });
-  }
-
-  if (badge && pending > 0) {
-    badge.textContent = pending > 99 ? "99+" : String(pending);
-    badge.classList.remove("hidden");
-  }
-
-  if (banner && pending > 0) {
-    bannerText.textContent = `有 ${pending} 条用户注册待审批`;
-    banner.classList.remove("hidden");
-    if (bannerLink) {
-      bannerLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        try {
-          await syncDjangoSession();
-          window.location.href = bannerLink.href;
-        } catch (err) {
-          alert("无法打开审批页，请重新登录后再试。");
-        }
-      });
-    }
-  }
-}
-
-async function initApp(me) {
-  $("#user-info").textContent =
-    me.username + (me.groups?.length ? ` (${me.groups.join(", ")})` : "");
-
-  setupRegistrationNav(me);
-
-  if (!_appInitialized) {
-    _appInitialized = true;
-    $("#logout-btn").addEventListener("click", async () => {
-      destroyDashboardCharts();
-      await syncDjangoLogout();
-      clearTokens();
-      showLogin();
-    });
-  }
-
-  try {
-    await syncDjangoSession();
-  } catch (e) {
-    console.warn("Django session sync failed:", e);
-  }
-
-  await loadDashboard();
-}
-
-function showBoot(message) {
-  $("#boot-screen").classList.remove("hidden");
-  $("#login-screen").classList.add("hidden");
-  $("#app-screen").classList.add("hidden");
-  const msg = $("#boot-message");
-  if (msg) msg.textContent = message || "正在加载…";
-}
-
-function showLogin() {
-  $("#boot-screen").classList.add("hidden");
-  $("#login-screen").classList.remove("hidden");
-  $("#app-screen").classList.add("hidden");
-}
-
-function showApp() {
-  $("#boot-screen").classList.add("hidden");
-  $("#login-screen").classList.add("hidden");
-  $("#app-screen").classList.remove("hidden");
-  $("#dashboard-content").innerHTML =
-    '<div class="sci-dash"><p class="loading">正在加载数据…</p></div>';
-}
-
-async function bootstrapApp() {
-  showBoot("正在恢复会话…");
-  const sessionOk = await ensureAccessToken();
-  if (!sessionOk) {
-    throw new Error("登录已过期，请重新登录");
-  }
-  const me = await getMe();
-  showApp();
-  await initApp(me);
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  $("#login-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const errEl = $("#login-error");
-    errEl.textContent = "";
-    const username = $("#username").value.trim();
-    const password = $("#password").value;
-    try {
-      showBoot("登录中…");
-      await login(username, password);
-      await syncDjangoSession();
-      await bootstrapApp();
-    } catch (err) {
-      showLogin();
-      const msg = err.message || "登录失败";
-      if (/no active account|not active|未启用/i.test(msg)) {
-        errEl.textContent = "账号未启用或正在等待 guan 审批，通过后再来首页登录。";
-      } else {
-        errEl.textContent = msg;
-      }
-    }
-  });
-
-  const { access, refresh } = getTokens();
-  if (access || refresh) {
-    try {
-      await bootstrapApp();
-    } catch (err) {
-      clearTokens();
-      showLogin();
-      $("#login-error").textContent = err.message || "会话已失效，请重新登录";
-    }
-  } else {
-    showLogin();
-  }
-});
+const $ = (sel) => document.querySelector(sel);
+
+
+
+let _appInitialized = false;
+
+
+
+async function loadDashboard() {
+
+  const el = $("#dashboard-content");
+
+  el.innerHTML = '<div class="sci-dash"><p class="loading">加载中…</p></div>';
+
+  try {
+
+    destroyDashboardCharts();
+
+    const d = await getDashboard();
+
+    renderDashboard(d, el);
+
+  } catch (e) {
+
+    el.innerHTML = `<p class="error">${e.message}</p>`;
+
+  }
+
+}
+
+
+
+function setupRegistrationNav(me) {
+
+  const regNav = $("#nav-registrations");
+
+  const badge = $("#nav-reg-badge");
+
+  const banner = $("#reg-pending-banner");
+
+  const bannerText = $("#reg-pending-text");
+
+  const bannerLink = $("#reg-pending-link");
+
+  const canReview = !!me.can_review_registrations;
+
+  const pending = me.pending_registration_count || 0;
+
+
+
+  if (!canReview) return;
+
+
+
+  if (regNav) {
+
+    regNav.classList.remove("hidden");
+
+    regNav.addEventListener("click", async (e) => {
+
+      e.preventDefault();
+
+      try {
+
+        await syncDjangoSession();
+
+        window.location.href = regNav.href;
+
+      } catch (err) {
+
+        alert("无法打开审批页，请重新登录后再试。");
+
+      }
+
+    });
+
+  }
+
+
+
+  if (badge && pending > 0) {
+
+    badge.textContent = pending > 99 ? "99+" : String(pending);
+
+    badge.classList.remove("hidden");
+
+  }
+
+
+
+  if (banner && pending > 0) {
+
+    bannerText.textContent = `有 ${pending} 条用户注册待审批`;
+
+    banner.classList.remove("hidden");
+
+    if (bannerLink) {
+
+      bannerLink.addEventListener("click", async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+          await syncDjangoSession();
+
+          window.location.href = bannerLink.href;
+
+        } catch (err) {
+
+          alert("无法打开审批页，请重新登录后再试。");
+
+        }
+
+      });
+
+    }
+
+  }
+
+}
+
+
+
+async function initApp(me) {
+
+  $("#user-info").textContent =
+
+    me.username + (me.groups?.length ? ` (${me.groups.join(", ")})` : "");
+
+
+
+  setupRegistrationNav(me);
+
+
+
+  if (!_appInitialized) {
+
+    _appInitialized = true;
+
+    setupMobileSidebar();
+
+    $("#logout-btn").addEventListener("click", async () => {
+
+      destroyDashboardCharts();
+
+      await syncDjangoLogout();
+
+      clearTokens();
+
+      showLogin();
+
+    });
+
+  }
+
+
+
+  try {
+
+    await syncDjangoSession();
+
+  } catch (e) {
+
+    console.warn("Django session sync failed:", e);
+
+  }
+
+
+
+  await loadDashboard();
+
+}
+
+
+
+function setupMobileSidebar() {
+
+  const sidebar = document.querySelector(".sidebar");
+
+  const backdrop = document.getElementById("sidebar-backdrop-spa");
+
+  const openBtn = document.getElementById("sidebar-menu-btn");
+
+  if (!sidebar || !backdrop || !openBtn) return;
+
+  function openSidebar() {
+
+    sidebar.classList.add("open");
+
+    backdrop.classList.add("show");
+
+  }
+
+  function closeSidebar() {
+
+    sidebar.classList.remove("open");
+
+    backdrop.classList.remove("show");
+
+  }
+
+  openBtn.addEventListener("click", openSidebar);
+
+  backdrop.addEventListener("click", closeSidebar);
+
+  sidebar.querySelectorAll(".nav-btn, .nav-link").forEach(function (el) {
+
+    el.addEventListener("click", function () {
+
+      if (window.matchMedia("(max-width: 640px)").matches) closeSidebar();
+
+    });
+
+  });
+
+}
+
+
+
+function showBoot(message) {
+
+  $("#boot-screen").classList.remove("hidden");
+
+  $("#login-screen").classList.add("hidden");
+
+  $("#app-screen").classList.add("hidden");
+
+  const msg = $("#boot-message");
+
+  if (msg) msg.textContent = message || "正在加载…";
+
+}
+
+
+
+function showLogin() {
+
+  $("#boot-screen").classList.add("hidden");
+
+  $("#login-screen").classList.remove("hidden");
+
+  $("#app-screen").classList.add("hidden");
+
+}
+
+
+
+function showApp() {
+
+  $("#boot-screen").classList.add("hidden");
+
+  $("#login-screen").classList.add("hidden");
+
+  $("#app-screen").classList.remove("hidden");
+
+  $("#dashboard-content").innerHTML =
+
+    '<div class="sci-dash"><p class="loading">正在加载数据…</p></div>';
+
+}
+
+
+
+async function bootstrapApp() {
+
+  showBoot("正在恢复会话…");
+
+  const sessionOk = await ensureAccessToken();
+
+  if (!sessionOk) {
+
+    throw new Error("登录已过期，请重新登录");
+
+  }
+
+  const me = await getMe();
+
+  showApp();
+
+  await initApp(me);
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  $("#login-form").addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const errEl = $("#login-error");
+
+    errEl.textContent = "";
+
+    const username = $("#username").value.trim();
+
+    const password = $("#password").value;
+
+    try {
+
+      showBoot("登录中…");
+
+      await login(username, password);
+
+      await syncDjangoSession();
+
+      await bootstrapApp();
+
+    } catch (err) {
+
+      showLogin();
+
+      const msg = err.message || "登录失败";
+
+      if (/no active account|not active|未启用/i.test(msg)) {
+
+        errEl.textContent = "账号未启用或正在等待 guan 审批，通过后再来首页登录。";
+
+      } else {
+
+        errEl.textContent = msg;
+
+      }
+
+    }
+
+  });
+
+
+
+  const { access, refresh } = getTokens();
+
+  if (access || refresh) {
+
+    try {
+
+      await bootstrapApp();
+
+    } catch (err) {
+
+      clearTokens();
+
+      showLogin();
+
+      $("#login-error").textContent = err.message || "会话已失效，请重新登录";
+
+    }
+
+  } else {
+
+    showLogin();
+
+  }
+
+});
+

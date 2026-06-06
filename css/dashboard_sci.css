@@ -61,7 +61,7 @@
 }
 
 .sci-dash .sci-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -69,7 +69,7 @@
 }
 
 .sci-dash .sci-badge {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--sci-muted);
@@ -80,7 +80,7 @@
 }
 
 .sci-dash .sci-kpi-label {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--sci-muted);
@@ -89,14 +89,14 @@
 
 .sci-dash .sci-kpi-value {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 1.65rem;
+  font-size: 1.85rem;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .sci-dash .sci-kpi-sub {
   margin-top: 6px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--sci-muted);
   display: flex;
   align-items: center;
@@ -106,7 +106,7 @@
 
 .sci-dash .sci-kpi-sub .delta {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .sci-dash .val-blue { color: var(--sci-blue); }
@@ -126,7 +126,7 @@
 }
 
 .sci-dash .sci-quick a {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--sci-blue);
   text-decoration: none;
   border: 1px solid var(--sci-border);
@@ -141,12 +141,12 @@
 .sci-dash .sci-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .sci-dash .sci-table th {
   text-align: left;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--sci-muted);
@@ -196,13 +196,13 @@
 .sci-dash .cost-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 14px;
   margin-bottom: 4px;
 }
 
 .sci-dash .cost-meta span:first-child {
   color: var(--sci-text);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .sci-dash .cost-meta span:last-child {
@@ -238,7 +238,7 @@
 }
 
 .sci-dash .sci-mini .label {
-  font-size: 9px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--sci-muted);
@@ -258,7 +258,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 8px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--sci-muted);
 }
 
@@ -292,13 +292,13 @@
   border: 1px solid var(--sci-border);
   border-radius: 3px;
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: 14px;
   background: var(--sci-surface);
   color: var(--sci-text);
 }
 
 .sci-dash .sci-btn {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.03em;
   padding: 6px 12px;
   border-radius: 3px;
@@ -390,7 +390,7 @@
 
 .sci-dash .sci-modal-sub {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--sci-blue);
   margin-top: 2px;
 }
@@ -405,7 +405,7 @@
 }
 
 .sci-dash .sci-modal-hint {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--sci-yellow);
   margin-bottom: 10px;
   padding: 8px;
@@ -419,7 +419,7 @@
   border: 1px solid var(--sci-border);
   border-radius: 3px;
   padding: 8px 10px;
-  font-size: 12px;
+  font-size: 14px;
   min-height: 4.5rem;
   resize: vertical;
   font-family: inherit;
@@ -495,7 +495,6 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 12px rgba(31, 35, 40, 0.04);
-}
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 40;
@@ -517,8 +516,8 @@
   gap: 0.5rem;
 }
 
-.sci-app-sidebar-head h1 { font-size: 1rem; font-weight: 700; }
-.sci-app-sidebar-head p { font-size: 0.7rem; color: var(--sci-muted); margin-top: 0.2rem; }
+.sci-app-sidebar-head h1 { font-size: 1.15rem; font-weight: 700; }
+.sci-app-sidebar-head p { font-size: 0.8rem; color: var(--sci-muted); margin-top: 0.2rem; }
 
 .sci-app-nav { flex: 1; overflow-y: auto; padding: 0.5rem 0; }
 
@@ -527,7 +526,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 1rem;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   color: var(--sci-text);
   text-decoration: none;
   border-left: 3px solid transparent;
@@ -552,7 +551,7 @@
 .sci-app-sidebar-foot {
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--sci-border);
-  font-size: 0.72rem;
+  font-size: 0.92rem;
   color: var(--sci-muted);
 }
 
@@ -589,12 +588,12 @@
 .sci-link:hover { text-decoration: underline; }
 .sci-breadcrumb-sep { color: var(--sci-muted); margin: 0 0.25rem; }
 
-.sci-page-title { font-size: 1.1rem; font-weight: 600; margin-top: 0.35rem; }
+.sci-page-title { font-size: 1.35rem; font-weight: 600; margin-top: 0.35rem; }
 
 .sci-msg {
   border-radius: 3px;
   padding: 0.55rem 0.85rem;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   margin-bottom: 0.5rem;
   border: 1px solid var(--sci-border);
 }
@@ -618,7 +617,7 @@
   border: 1px solid var(--sci-border);
   border-radius: 3px;
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: 14px;
   background: var(--sci-surface);
   color: var(--sci-text);
 }
@@ -626,7 +625,7 @@
 .sci-textarea { min-height: 4.5rem; resize: vertical; font-family: inherit; }
 
 .sci-btn {
-  font-size: 11px;
+  font-size: 13px;
   padding: 6px 12px;
   border-radius: 3px;
   border: 1px solid var(--sci-border);
@@ -660,7 +659,7 @@
 }
 
 .sci-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -668,7 +667,7 @@
 }
 
 .sci-badge {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--sci-muted);
@@ -680,12 +679,12 @@
 .sci-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .sci-table th {
   text-align: left;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--sci-muted);
@@ -725,7 +724,7 @@
 .sci-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 
 .sci-tabs a {
-  font-size: 11px;
+  font-size: 13px;
   padding: 5px 10px;
   border: 1px solid var(--sci-border);
   border-radius: 3px;
@@ -740,15 +739,15 @@
 
 .sci-field label {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--sci-muted);
   margin-bottom: 0.3rem;
 }
 
-.sci-field .error { color: var(--sci-red); font-size: 10px; margin-top: 0.25rem; }
+.sci-field .error { color: var(--sci-red); font-size: 14px; margin-top: 0.25rem; }
 
-.sci-pagination { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; font-size: 11px; }
+.sci-pagination { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; font-size: 13px; }
 
 .sci-pagination a, .sci-pagination span {
   padding: 4px 8px;
@@ -800,14 +799,14 @@
 .sci-link-weak {
   color: var(--sci-muted);
   text-decoration: none;
-  font-size: 11px;
+  font-size: 14px;
 }
 .sci-link-weak:hover { color: var(--sci-text); }
 
 .sci-text-blue { color: var(--sci-blue); }
 
 .sci-label {
-  font-size: 9px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--sci-muted);
@@ -844,7 +843,7 @@
 .impex-export-menu a {
   display: block;
   padding: 6px 12px;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--sci-text);
   text-decoration: none;
 }
@@ -912,7 +911,7 @@ a.sci-card:hover {
   margin-bottom: 2px;
   cursor: pointer;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--sci-text);
   border: 1px solid transparent;
   transition: background 0.15s, border-color 0.15s;
@@ -946,7 +945,7 @@ a.sci-card:hover {
 }
 
 .ai-session-item .meta {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--sci-muted);
   margin-top: 3px;
   font-weight: 400;
@@ -987,7 +986,7 @@ a.sci-card:hover {
   border: 1px solid #d4a72c;
   border-radius: 4px;
   padding: 12px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #ai-attachment-strip { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1012,10 +1011,10 @@ a.sci-card:hover {
   overflow-y: auto;
 }
 
-.ai-msg-system { font-size: 12px; color: var(--sci-muted); margin-bottom: 8px; }
+.ai-msg-system { font-size: 14px; color: var(--sci-muted); margin-bottom: 8px; }
 
 .ai-msg-user {
-  font-size: 12px;
+  font-size: 14px;
   margin: 8px 0 8px 2rem;
   padding: 10px 12px;
   background: #ddf4ff;
@@ -1025,7 +1024,7 @@ a.sci-card:hover {
 }
 
 .ai-msg-assistant {
-  font-size: 12px;
+  font-size: 14px;
   margin: 8px 0;
   padding: 10px 12px;
   background: var(--sci-raised);
@@ -1035,7 +1034,7 @@ a.sci-card:hover {
 }
 
 .ai-msg-error {
-  font-size: 12px;
+  font-size: 14px;
   margin: 8px 0;
   padding: 10px 12px;
   background: #ffebe9;
@@ -1060,7 +1059,7 @@ a.sci-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 14px;
   text-align: center;
   padding: 4px;
 }
@@ -1072,7 +1071,7 @@ a.sci-card:hover {
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
   border: none;
-  font-size: 11px;
+  font-size: 13px;
   padding: 0 4px;
   cursor: pointer;
   line-height: 1.4;
@@ -1080,7 +1079,7 @@ a.sci-card:hover {
 
 #ai-endpoint-list { list-style: none; padding: 0; margin: 0; }
 
-.ai-endpoint-empty { padding: 10px; font-size: 12px; color: var(--sci-muted); }
+.ai-endpoint-empty { padding: 10px; font-size: 14px; color: var(--sci-muted); }
 
 .ai-endpoint-item {
   display: flex;
@@ -1093,9 +1092,9 @@ a.sci-card:hover {
 }
 
 .ai-endpoint-info { min-width: 0; flex: 1; }
-.ai-endpoint-info .name { font-weight: 600; font-size: 12px; }
+.ai-endpoint-info .name { font-weight: 600; font-size: 14px; }
 .ai-endpoint-info .detail {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--sci-muted);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1104,11 +1103,11 @@ a.sci-card:hover {
 
 .ai-endpoint-actions { display: flex; gap: 4px; flex-shrink: 0; }
 
-#ai-model-bar label { font-size: 11px; color: var(--sci-muted); margin-right: 6px; }
+#ai-model-bar label { font-size: 13px; color: var(--sci-muted); margin-right: 6px; }
 
 .ai-preview-json {
   margin-top: 6px;
-  font-size: 10px;
+  font-size: 14px;
   background: var(--sci-surface);
   padding: 8px;
   border: 1px solid var(--sci-border);
@@ -1134,5 +1133,110 @@ a.sci-card:hover {
     bottom: 0;
     z-index: 35;
     border-radius: 0;
+  }
+}
+
+/* ── v3 表格横向滚动 ── */
+.sci-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 0.5rem;
+}
+
+.sci-dash .sci-table,
+.sci-table {
+  min-width: 600px;
+}
+
+nav[aria-label="面包屑"] {
+  font-size: 0.88rem;
+}
+
+.sci-breadcrumb {
+  color: var(--sci-muted);
+}
+
+/* ── v3 移动端优化 ── */
+@media (max-width: 640px) {
+  .sci-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sci-toolbar form {
+    width: 100%;
+  }
+
+  .sci-toolbar form input,
+  .sci-toolbar form select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sci-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sci-btn {
+    flex: 1;
+    padding: 10px 12px;
+    min-height: 44px;
+    text-align: center;
+  }
+
+  .sci-card {
+    padding: 10px 12px;
+  }
+
+  .sci-table th,
+  .sci-table td {
+    padding: 6px;
+  }
+
+  .sci-app-header-row {
+    flex-wrap: wrap;
+  }
+
+  .sci-app-search {
+    min-width: 100%;
+    order: 3;
+  }
+
+  .sci-app-sidebar {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  #ai-chat-root {
+    flex-direction: column;
+  }
+
+  #ai-session-sidebar {
+    width: 100%;
+    max-height: 40vh;
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  #ai-chat-form textarea {
+    min-height: 60px;
+  }
+
+  #ai-chat-form .sci-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  .impex-toolbar {
+    width: 100%;
+  }
+
+  .impex-toolbar .sci-btn {
+    flex: 1;
   }
 }
