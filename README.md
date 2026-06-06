@@ -47,3 +47,8 @@ npx vercel --prod
 1. **先退出再重新登录**（清除过期 token）
 2. 打开浏览器 F12 → Network，看 `/api/dashboard/` 是否报错
 3. 若一直超时，检查 Clash/VPN 是否劫持 `xkyframe.com` 域名
+
+## API 代理说明
+
+Vercel 的 `/api/*` 会转发到腾讯云服务器 **IP**（`124.221.93.94`），不能走 `api.xkyframe.com` 域名——
+海外节点访问该域名会被腾讯云备案拦截（302 到 webblock 页面），导致仪表盘无数据。

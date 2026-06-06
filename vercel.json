@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "http://api.xkyframe.com/api/$1" }
+    { "source": "/api/(.*)", "destination": "http://124.221.93.94/api/$1" }
   ],
   "headers": [
     {
