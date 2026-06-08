@@ -1,7 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "http://124.221.93.94/" },
-    { "source": "/:path*", "destination": "http://124.221.93.94/:path*" }
+    { "source": "/(.*)", "destination": "http://124.221.93.94/$1" }
   ],
   "headers": [
     {
