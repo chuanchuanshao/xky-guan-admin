@@ -1,34 +1,7 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "http://124.221.93.94/api/$1" },
-    { "source": "/admin", "destination": "http://124.221.93.94/admin/" },
-    { "source": "/admin/(.*)", "destination": "http://124.221.93.94/admin/$1" },
-    { "source": "/accounts/(.*)", "destination": "http://124.221.93.94/accounts/$1" },
-    { "source": "/ai/(.*)", "destination": "http://124.221.93.94/ai/$1" },
-    { "source": "/orders", "destination": "http://124.221.93.94/orders/" },
-    { "source": "/orders/(.*)", "destination": "http://124.221.93.94/orders/$1" },
-    { "source": "/production", "destination": "http://124.221.93.94/production/" },
-    { "source": "/production/(.*)", "destination": "http://124.221.93.94/production/$1" },
-    { "source": "/inventory", "destination": "http://124.221.93.94/inventory/" },
-    { "source": "/inventory/(.*)", "destination": "http://124.221.93.94/inventory/$1" },
-    { "source": "/purchasing", "destination": "http://124.221.93.94/purchasing/" },
-    { "source": "/purchasing/(.*)", "destination": "http://124.221.93.94/purchasing/$1" },
-    { "source": "/customers", "destination": "http://124.221.93.94/customers/" },
-    { "source": "/customers/(.*)", "destination": "http://124.221.93.94/customers/$1" },
-    { "source": "/suppliers", "destination": "http://124.221.93.94/suppliers/" },
-    { "source": "/suppliers/(.*)", "destination": "http://124.221.93.94/suppliers/$1" },
-    { "source": "/finance", "destination": "http://124.221.93.94/finance/" },
-    { "source": "/finance/(.*)", "destination": "http://124.221.93.94/finance/$1" },
-    { "source": "/reports", "destination": "http://124.221.93.94/reports/" },
-    { "source": "/reports/(.*)", "destination": "http://124.221.93.94/reports/$1" },
-    { "source": "/settings", "destination": "http://124.221.93.94/settings/" },
-    { "source": "/settings/(.*)", "destination": "http://124.221.93.94/settings/$1" },
-    { "source": "/impex/(.*)", "destination": "http://124.221.93.94/impex/$1" },
-    { "source": "/search/(.*)", "destination": "http://124.221.93.94/search/$1" },
-    { "source": "/notifications", "destination": "http://124.221.93.94/notifications/" },
-    { "source": "/notifications/(.*)", "destination": "http://124.221.93.94/notifications/$1" },
-    { "source": "/static/(.*)", "destination": "http://124.221.93.94/static/$1" },
-    { "source": "/media/(.*)", "destination": "http://124.221.93.94/media/$1" }
+    { "source": "/", "destination": "http://124.221.93.94/" },
+    { "source": "/:path*", "destination": "http://124.221.93.94/:path*" }
   ],
   "headers": [
     {

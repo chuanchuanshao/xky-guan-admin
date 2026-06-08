@@ -1,87 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XKY 管理面板</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/dashboard_sci.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <title>XKY 管理平台</title>
+  <meta http-equiv="refresh" content="0;url=/accounts/login/">
+  <script>location.replace("/accounts/login/");</script>
 </head>
 <body>
-
-  <div id="boot-screen" class="hidden">
-    <div class="boot-card">
-      <div class="boot-spinner" aria-hidden="true"></div>
-      <p id="boot-message">正在加载…</p>
-    </div>
-  </div>
-
-  <div id="login-screen" class="hidden">
-    <div class="login-card">
-      <h1>XKY 管理面板</h1>
-      <p class="subtitle">guan.xkyframe.com · 登录后可使用完整业务功能</p>
-      <form id="login-form">
-        <div class="form-group">
-          <label for="username">用户名</label>
-          <input type="text" id="username" name="username" required autocomplete="username">
-        </div>
-        <div class="form-group">
-          <label for="password">密码</label>
-          <input type="password" id="password" name="password" required autocomplete="current-password">
-        </div>
-        <button type="submit" class="btn btn-primary">登录</button>
-        <p id="login-error" class="error"></p>
-      </form>
-      <p class="login-register-footer">
-        没有账号？<a href="/accounts/register/">注册申请</a>
-        <span class="login-register-hint">（提交后需 guan 审批）</span>
-      </p>
-    </div>
-  </div>
-
-  <div id="app-screen" class="hidden">
-    <div id="sidebar-backdrop-spa" class="sidebar-backdrop" aria-hidden="true"></div>
-    <aside class="sidebar">
-      <div class="brand">XKY 工厂管理</div>
-      <nav class="sidebar-nav">
-        <button type="button" class="nav-btn active" data-page="page-dashboard">经营总览</button>
-        <a class="nav-link" href="/orders/">订单管理</a>
-        <a class="nav-link" href="/ai/chat/">AI 录单</a>
-        <a class="nav-link" href="/production/">生产管理</a>
-        <a class="nav-link" href="/inventory/">库存管理</a>
-        <a class="nav-link" href="/purchasing/">采购管理</a>
-        <a class="nav-link" href="/customers/">客户管理</a>
-        <a class="nav-link" href="/suppliers/">供应商</a>
-        <a class="nav-link" href="/finance/">财务管理</a>
-        <a class="nav-link" href="/reports/">报表中心</a>
-        <a class="nav-link" href="/settings/">系统设置</a>
-        <a class="nav-link hidden" href="/accounts/registrations/" id="nav-registrations">注册审批 <span id="nav-reg-badge" class="nav-badge hidden"></span></a>
-      </nav>
-    </aside>
-    <div class="main">
-      <header class="topbar">
-        <button type="button" id="sidebar-menu-btn" class="btn btn-ghost sidebar-menu-btn" aria-label="打开菜单">菜单</button>
-        <span class="topbar-title">经营总览</span>
-        <div>
-          <span class="user" id="user-info"></span>
-          <button class="btn btn-ghost" id="logout-btn" style="margin-left:.75rem">退出</button>
-        </div>
-      </header>
-      <div class="content">
-        <div id="reg-pending-banner" class="reg-pending-banner hidden">
-          <span id="reg-pending-text"></span>
-          <a href="/accounts/registrations/" id="reg-pending-link">前往审批 →</a>
-        </div>
-        <div id="page-dashboard" class="page">
-          <div id="dashboard-content"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/api.js"></script>
-  <script src="js/dashboard.js"></script>
-  <script src="js/app.js"></script>
+  <p>正在跳转到 Django 首页… <a href="/">若未自动跳转请点击这里</a></p>
 </body>
 </html>
